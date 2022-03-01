@@ -1,0 +1,157 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css"/>
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<META HTTP-EQUIV="EXPIRES" CONTENT="0">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<title>Restaurant Hygiene</title>
+
+</head>
+
+<body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-45116482-1', 'stonybrook.edu');
+  ga('send', 'pageview');
+
+</script>
+<div id="body">
+
+<div id="logobox">
+<div id="imgbox_LEFT" ><img id="logo" src="./images/SBU_logo.jpg"></div>
+<!-- <div id="imgbox_RIGHT" ><img id="logo" src="./images/hbs_logo.png" style="height:55px"></div> -->
+</div>
+
+<div id="title" class="section">
+<strong>Where Not to Eat? </strong><em>Improving Public Policy by Predicting Hygiene Inspections Using Online Reviews</em>
+</div>
+
+<!-- <div id="abstract" class="section">
+Health inpsection on the restaurants are important to keep the restaurants we eat at clean. Several studies have confirmed that grade posting, which require the restaurants to post their inspection grade, affects the revenue of the restaurants and decreases the food-borne illness risks.  -->
+<!-- This paper offers an approach for governments to harness the information contained in social media in order to make public inspections and disclosure more efficient. As a case study, we turn to restaurant hygiene inspections – which are done for restaurants throughout the United States and in most of the world and are a frequently cited example of public inspections and disclosure. We present the first empirical study that shows the viability of statistical models that learn the mapping between textual signals in restaurant reviews and the hygiene inspection records from the Department of Public Health. The learned model achieves over 82% accuracy in discriminating severe offenders from places with no violation, and provides insights into salient cues in reviews that are indicative of the restaurant’s sanitary conditions. Our study suggests that public disclosure policy can be improved by mining public opinions from social media to target inspections and to provide alternative forms of disclosure to customers. -->
+<!-- </div> -->
+
+<div id="dataset_instances" class="section">
+<div id="section_title"> Dataset (classification instances based on <em>"inspection periods"</em> as used in the paper)</div>
+<ul> 
+
+	<li>Data set (per-inspection period, aggregated reviews &amp; other meta data)
+		<ul>
+			<li> Download: <a href="http://www.cs.stonybrook.edu/~junkang/hygiene/data/instances_mergerd_seattle.csv.gz"> here </a> 
+			<!--<li> <a href="http://www.cs.stonybroo.edu/~junkang/hygiene/reviews.json.gz"> JSON format</a>
+		-->
+			<li> File Format: comma seperated values </li>
+			<li> Data Fields: [inspection_id, restaurant_id, inspection_period_start_date, inspection_period_end_date,<br> inspection_penalty_score, inspection_average_prev_penalty_scores, inspection_prev_penalty_score, <br>
+			cuisines, zip_code, review_count, non_positive_review_count, average_review_rating, review_contents] </li>
+		</ul>
+	</li>
+</ul>
+
+</div>
+<div id="dataset_additional" class="section">
+<div id="section_title"> Additional Data (potentially useful records and data in addition to above)</div>
+<ul> 
+
+	<li>Inspection Records
+		<ul>
+			<li>King County Data Portal: <a href="http://www.datakc.org"> www.datakc.org </a><br>
+				(Search for "Food Establishment Inspection Data")
+			</li>
+			<li>Direct link to the inspection data: <a href="https://data.kingcounty.gov/dataset/Food-Establishment-Inspection-Data/f29f-zza5"> here</a><br>
+				(Choose "export" on the page, and select the data type you wish)
+			</li>
+		</ul>
+	</li>
+
+	<li>Restaurant Meta Data
+		<ul>
+			<li> Download: <a href="http://www.cs.stonybrook.edu/~junkang/hygiene/data/restaurants.csv.gz"> here </a> 
+			<!--<li> <a href="http://www.cs.stonybroo.edu/~junkang/hygiene/restaurants.json.gz"> JSON format</a>
+		-->
+			<li> File Format: tab seperated values </li>
+			<li> Data Fields: [restaurant_id, restaurant_name, rating, review_count, locality, street_address, categories] </li>
+			<!-- <li> Restaurants: 3922</li> -->
+		</ul>
+	</li>
+
+	<li>Reviews
+		<ul>
+			<li> Download: <a href="http://www.cs.stonybrook.edu/~junkang/hygiene/data/reviews.csv.gz"> here </a> 
+			<!--<li> <a href="http://www.cs.stonybroo.edu/~junkang/hygiene/reviews.json.gz"> JSON format</a>
+		-->
+			<li> File Format: tab seperated values </li>
+			<li> Data Fields: [review_id, restaurant_id, user_id, locality, review_date, rating, content] </li>
+		</ul>
+	</li>
+</ul>
+
+</div>
+
+
+
+<div id="Media" class="section">
+<div id="section_title">Media Coverage</div>
+<!-- <img id="atlantic_logo" src="http://cdn.theatlantic.com/static/front/images/logo/black-transparent.png" height="35px"> -->
+<ul>
+	<li>Our work has been featured by <span id="the_atlatic"> The Atlantic </span>&nbsp;<span style="font-size:12px;vertical-align: middle;">(July/August 2013)</span><br>
+ - <a href="http://www.theatlantic.com/magazine/archive/2013/07/youll-never-throw-up-in-this-town-again/309383/" target="_blank"><em>How Yelp Might Clean Up the Restaurant Industry </em></a> <!-- &nbsp;&nbsp;<span style="font-size:12px">(July/August 2013)</span>-->
+	</li>
+</ul>
+</div>
+
+
+<div id="papers" class="section">
+<div id="section_title">Paper</div>
+Where Not to Eat? Improving Public Policy by Predicting Hygiene Inspections Using Online Reviews<br>
+<em>Jun Seok Kang, Polina Kuznetsova, Michael Luca, Yejin Choi, EMNLP 2013</em> &nbsp; &nbsp;
+<a href="http://www.cs.stonybrook.edu/~junkang/papers/hygiene2013.pdf">[pdf]</a>, <a href="http://www.cs.stonybrook.edu/~junkang/papers/hygiene2013poster.pdf">[poster]</a>
+
+</div>
+
+
+<div id="cite" class="section">
+<div id="section_title">Citation</div>
+Please cite the following if using the data on this page.
+<pre>
+@InProceedings{hygiene:kang:EMNLP2013,
+  author    = {Kang, Jun Seok  and  Kuznetsova, Polina  and  Luca, Michael  and  Choi, Yejin},
+  title     = {Where Not to Eat? Improving Public Policy by Predicting Hygiene Inspections Using Online Reviews},
+  booktitle = {Proceedings of the 2013 Conference on Empirical Methods in Natural Language Processing},
+  month     = {October},
+  year      = {2013},
+  address   = {Seattle, Washington, USA},
+  publisher = {Association for Computational Linguistics},
+  pages     = {1443--1448},
+  url       = {http://www.aclweb.org/anthology/D13-1150}
+}
+
+</pre>
+</div>
+
+<div id="contact" class="section">
+<div id="section_title"> Contact</div>
+We welcome any comments or questions about the project or the data. <br>
+Please contact <a href="http://www.cs.stonybrook.edu/~junkang/"><em>Jun Kang</em></a> at <img id="email_box" src="http://www.cs.stonybrook.edu/~junkang/images/email_jun.png"> 
+
+<br>
+</div>
+<br>
+<br>
+<br>
+
+
+</div> <!-- body -->
+<br>
+<br>
+<br>
+<br>
+<br>
+

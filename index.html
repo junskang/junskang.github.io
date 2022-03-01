@@ -1,0 +1,397 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="stylesheet" href="./css/style.css" type="text/css"/>
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<META HTTP-EQUIV="EXPIRES" CONTENT="0">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<title>Jun Seok Kang</title>
+
+</head>
+
+<body>
+
+<div id="body">
+
+<div id="logobox" style="height:120px">
+<div id="imgbox_RIGHT" ><img id="logo" src="./images/SBU_logo.jpg"></div>
+<div id="imgbox_LEFT" ><img  src="./images/jun_boracay.jpg" height="120px" ></div>
+</div>
+
+<!-- <div id="photo" class="section" >
+<img src="./images/jun_boracay.jpg" width="200">
+</div> -->
+
+<!-- <div id="title" class="section">
+<strong>Jun Seok Kang </strong>
+</div> -->
+
+
+<!-- ##################################### About Me #################################################### -->
+
+<div id="Intr" class="section">
+	<div class="section_title">Jun Seok Kang</div>
+	<div class="section_content">
+		I am a PhD candidate at the Department of Computer Science at Stony Brook University. 
+		<br>
+		<br>
+		<!-- The main focus of my research is on social media analytics. 
+		To understand subtle, nuanced sentiment of words better, a connotation lexicon is constructed using large scale data. 
+		Online reviews on restaurants are used to predict their hygiene status, which can be used for social good. 
+		I study the deception detection by analyzing the characteristics of keystroke patterns.
+		To detect the deceptive intent of authors, the characteristics of keystroke patterns of truthful and deceptive writers is analyzed.
+		I also work on writing style analytics, such as semantic composition patterns of sentences/documents, in order to revise them better.
+		 -->
+
+The main focus of my research is on social media analytics. 
+To analyze subtle and nuanced sentiment of words that are prevalent in social media, I work on constructing a connotation lexicon by formulating a graph model of words using large scale data. 
+<!-- In recent years, online deception has become an increasing challenge in sustaining trustworthy communities, as any user can contribute their opinions to social media. 
+Thus,  -->
+I have also worked on deception detection by analyzing the characteristics of keystroke patterns. The key insight is that the style of writing, together with the keystroke patterns, can help detecting the intent of authors, even when it is deceptive. 
+
+I have also worked on predicting restaurant hygiene inspection results from online reviews in a hope to be helpful to local government in dispatching their inspectors. This project is <!-- thanks to collaboration with Mike Luca at Harvard Business School and --> an example of turning NLP techniques for social good. 
+
+<br>I am currently working on neural language generation focusing on controlling style and content of the generated text. 
+
+		<!-- The main focus of my research is on learning insights that we can extract from large scale text data. To learn subtle, nuanced sentiment of words, we use large scale text data approximated by Google N-gram corpus. Hygience status of restaurants can be predicted using online reviews on them, and deceptive intent buried in such reviews or documents can be detected based on several linguistic cues or even based on how they are written/typed. I am also working on a system that can revise documents after learning the semantic composition patterns of the documents from the same domain.  -->
+		<br>
+		<br>
+		My Adviser is <a href="http://homes.cs.washington.edu/~yejin/"><span class="advisor">Yejin Choi</span></a> and <a href="http://www3.cs.stonybrook.edu/~niranjan/"><span class="advisor">Niranjan Balasubramanian</span></a><br>
+		<br>
+		- Email: <img id="email_box" src="./images/email_jun.png"> <br>
+		- <a href="./files/CV.pdf" class="project_paper_link" style="color:#44F">CV</a>
+		<br>
+	</div>
+</div>
+
+
+<!-- ##################################### Publications #################################################### -->
+<div id="Projects" class="section">
+	<div class="section_title">Projects</div>
+	
+	<div class="sub_section">
+		<div class="sub_section_title">Post-Modifier Generation</div>
+		<div class="sub_section_content">
+			<table class="sub_section_table">
+				<tr>
+					<td>
+						<div class="">
+						
+<p>Post-modifier is a short phrase that comes after an entity in a sentence to describe the entity in detail. It can be found easily in many news articles. For example, in the below sentence, <q>the MIT professor and antiwar activist</q> is the post-modifier of <q>Noam Chomsky</q>.</p>
+     
+<blockquote>Noam Chomsky, the MIT professor and antiwar activist, said Dr. Melman helped mobilize what once was weak and scattered resistance to war and other military operations. </blockquote>
+   
+<p>We formulate post-modifier generation task as a data-to-text generation problem, where the data is the context (a sentence without a post-modifier) and the set of known facts about the target entity. The text to be generated is a post-modifier that is relevant to the rest of the information conveyed in the text. The example on the right shows the input and output of the task.</p>
+     
+							<br>
+								<a href="https://arxiv.org/abs/1904.03111" class="project_paper_link">[Paper@NAACL 2019(arXiv version)]</a> 
+						
+								<a href="https://stonybrooknlp.github.io/PoMo/" class="project_page_link">[Project Page]</a>
+							</p>
+
+							
+						</div>
+					</td>
+					<td width="420px">
+						<div class="imgbox_RIGHT">
+							<a href="./images/pm_gen_task_small.png" target="_blank"><img src="./images/pm_gen_task_small.png" width="350px"></a>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<div class="sub_section">
+		<div class="sub_section_title">Learning Connotation of Words</div>
+		<div class="sub_section_content">
+			<table class="sub_section_table">
+				<tr>
+					<td>
+						<div class="">
+							<p>A considerable amount of studies of sentiment analysis have been focused on learning explicit sentiment of words and documents. To capture subtle shades of sentiment, this project aims to learn subtle, nuanced connotation of words, even that of seemingly objective words such as "intelligence", "human", and "cheesecake".</p>
+							
+							<p>We construct a graph of words encoding diverse linguistic insights (such as semantic prosody, distributional similarity and semantic parallelism of coordination) to construct a connotation lexicon.
+							<br>
+								<a href="http://www.cs.sunysb.edu/~songfeng/papers/acl2013_connotation.pdf" class="project_paper_link">[Paper@ACL 2013]</a> 
+								<a href="http://www.cs.stonybrook.edu/~ychoi/connotation/" class="project_page_link">[Project Page]</a>
+							</p>
+
+							<p>
+								We enhance our graph of words by adding senses to increase its coverage and to encode lexcical relations as additional information. From this extended graph, we construct a connotation lexicon, ConnotationWordNet, using loopy belief propagation as a lexicon induction algorithm. 
+
+
+								<br>
+								<a href="./papers/connotation_wordnet_2014.pdf" class="project_paper_link">[Paper@ACL 2014]</a> 
+								<a href="./connotation_wordnet/" class="project_page_link">[Project Page]</a>
+							</p>
+						</div>
+					</td>
+					<td width="420px">
+						<div class="imgbox_RIGHT">
+							<a href="./connotation_wordnet/images/connotation-graph.jpg" target="_blank"><img src="./connotation_wordnet/images/connotation-graph.jpg" width="400px"></a>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+
+	<div class="sub_section">
+		<div class="sub_section_title">Predicting Hygiene Status of Restaurants using Online Reviews</div>
+		<div class="sub_section_content">
+			<table class="sub_section_table">
+				<tr>
+					<td width="420px">
+						<div class="imgbox_RIGHT">
+							<a href="./hygiene/images/inspection_report_chart.png" target="_blank"><img src="./hygiene/images/inspection_report_chart.png" width="340px"></a>
+						</div>
+					</td>
+					<td>
+						<div class="">
+						<p>Many counties &amp; cities such as NYC or LA require restaurants to post their 
+					     inspection grades which helps people to decide where to eat.</p>
+
+						<p>However, the health departments often have limited resources to dispatch inspectors. (Among the Seattle restaurants listed on Yelp.com (2006~2013), more than 50% of them didn&#39;t have an inspection record!)</p>
+						<!-- Instead, we have hundreds of thousands of reviews on those places written by the very people who actually have visited them! -->
+						<p>In this project, we predict hygiene status of restaurants using online reviews in a hope to help local governments to dispatch their inspectors more efficiently. 
+							<br>
+							<a href="./papers/hygiene2013.pdf" class="project_paper_link">[Paper@EMNLP 2013]</a> 
+							<a href="./hygiene/" class="project_page_link">[Project Page]</a>
+
+						</p>
+						<!-- an example of turning NLP techniques for social good. -->
+						<p>* This project is thanks to collaboration with  <a href="http://www.hbs.edu/faculty/Pages/profile.aspx?facId=602417"><span class="advisor">Mike Luca</span></a> at Harvard Business School.</p>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<div class="sub_section">
+		<div class="sub_section_title">Detecting Deception Using Keystroke Patterns</div>
+		<div class="sub_section_content">
+			<table class="sub_section_table">
+				<tr>
+					<td>
+						<div class="">
+							<!-- <p>Thanks to the explosion of social media, it is now very easy to explore what others think of a product that you are interested in, or of an issue that is trending but you probably are not sure yet of your opinion. We still trust the experts on TV, newspapers, and magazines, but we tend to trust more what other regular Joe and Jane think. </p>
+ --><!-- 
+							<p>
+							When there is an issue, we used to read newspapers and magazines. Now, we read what other people posted online. When we buy something, we used to read experts' opinion. Now, we go online and read reviews. 
+							Since online reviews and articles often carry huge financial impact, there is large incentive for deceivers to post deceptive reviews and articles. 
+							</p> -->
+
+							<p>Many of the studies on deception detection focus on the insights you can learn from existing texts that are already written. </p>
+
+							<p>In this project, however, we turn our attention to keystroke patterns of truthful and deceptive writers and explore ways to use them as a means of detecting deceptive intent of the writers.
+								<br>
+								<a href="http://homes.cs.washington.edu/~yejin/Papers/emnlp14_keystroke.pdf" class="project_paper_link">[Paper@EMNLP 2014]</a>
+								 <a href="./keystroke/" class="project_page_link">[Project Page]</a>
+							</p>
+
+						</div>
+					</td>
+					<td width="410px">
+						<div class="imgbox_RIGHT">
+							
+							<a href="./keystroke/images/keystroke_chart.png" target="_blank">
+								<img src="./keystroke/images/keystroke_chart.png" width="320px">
+							</a>
+							<!-- <a href="https://bitchwantstea.files.wordpress.com/2010/03/typing.jpg" target="_blank">
+								<img src="https://bitchwantstea.files.wordpress.com/2010/03/typing.jpg" width="320px">
+							</a> -->
+
+<!-- <div class="getty embed image" style="background-color:#fff;display:inline-block;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#a7a7a7;font-size:11px;width:100%;max-width:250px;">
+	<div style="overflow:hidden;position:relative;height:0;padding:89.954338% 0 0 0;width:100%;margin-left:auto;margin-right:10px;">
+		<iframe src="//embed.gettyimages.com/embed/487781437?et=cX8DBOrgRX1CqG8CgTkGYw&viewMoreLink=on&sig=nI2yCVA6m9XGok5tV-dLIzAIKvp1I6DcEf7Z4beIZBQ=" width="250px" height="394" scrolling="no" frameborder="0" style="display:inline-block;position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+	</div>
+</div> -->
+<!-- <p style="margin:0;"></p> -->
+
+<!-- <div style="padding:0;margin:0 0 0 10px;text-align:left;"><a href="http://www.gettyimages.com/detail/487781437" target="_blank" style="color:#a7a7a7;text-decoration:none;font-weight:normal !important;border:none;display:inline-block;">View image</a> | <a href="http://www.gettyimages.com" target="_blank" style="color:#a7a7a7;text-decoration:none;font-weight:normal !important;border:none;display:inline-block;">gettyimages.com</a>
+</div>
+ -->
+
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<div class="sub_section">
+		<div class="sub_section_title">Learning Semantic Composition Patterns of Sentences; Revising Sentences </div>
+		<div class="sub_section_content">
+			<table class="sub_section_table">
+				<tr>
+					<td width="460px">
+						<div class="imgbox_LEFT">
+							<a href="./docRevision/images/dep_tree_diagram.png" target="_blank">
+								<img src="./docRevision/images/dep_tree_diagram.png" width="450px" border="0">
+							</a>
+						</div>
+					</td>
+					<td>
+						<div class="">
+							<p>
+								In this on-going project, we first learn semantic composition patterns of sentences from the documents of the same domain using mixed-Integer programming, and revise the sentences automatically using the learned sematic patterns and their statistics.
+								<br>
+<!-- 
+								<span class="project_in_progress">[In Progress]</span>
+ -->
+
+							</p>
+
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+
+
+
+<!-- ##################################### Publications #################################################### -->
+<div id="Publications" class="section">
+	<div class="section_title">Publications</div>
+<!-- 	<ul>
+		<li>2019 -->
+			<ul style="list-style-type:square">
+				<li>PoMo: Generating Entity-Specific Post-Modifiers in Context  <br>
+					<a href="./" class="coauthors" target="_blank">Jun Seok Kang,
+					<a href="https://rloganiv.github.io/" class="coauthors" target="_blank">Robert L. Logan IV,
+					<a href="http://people.cs.uchicago.edu/~zeweichu/" class="coauthors" target="_blank">Zewei Chu,
+					<a href="https://edchengg.github.io/" class="coauthors" target="_blank">Yang Chen,
+					<a href="https://ddua.github.io/src/index.html" class="coauthors" target="_blank">Dheeru Dua,
+					<a href="https://ttic.uchicago.edu/~kgimpel/" class="coauthors" target="_blank">Kevin Gimpel,
+					<a href="http://sameersingh.org/" class="coauthors" target="_blank">Sameer Singh,
+					<a href="https://www3.cs.stonybrook.edu/~niranjan/" class="coauthors" target="_blank">Niranjan Balasubramanian
+					NAACL 2019
+					<br>
+					- 
+					<a href="https://stonybrooknlp.github.io/PoMo/"><b>[Project Page]</b></a>, 
+					<a href="https://arxiv.org/abs/1904.03111"><b>[pdf(arXiv)]</b></a>
+					, [bib]
+<!-- 
+					<a href="">[pdf]</a>, 
+					<a href="">[bib]</a>
+ -->
+					<br>
+				</li>
+			</ul>
+
+<!-- 		</li>
+		<li>2014 -->
+			<ul style="list-style-type:square">
+				<li>Keystroke Patterns as Prosody in Digital Writings: A Case Study with Deceptive Reviews and Essays.  <br>
+					<a href="http://www3.cs.stonybrook.edu/~rbanerjee/" class="coauthors" target=_blank>Ritwik Banerjee</a>, 
+					<a href="http://www.cs.stonybrook.edu/~songfeng/" class="coauthors" target=_blank>Song Feng</a>,
+					<span class="myself">Jun Seok Kang</span>, 
+					<a href="http://homes.cs.washington.edu/~yejin/" class="coauthors" target=_blank>Yejin Choi</a>, EMNLP 2014
+					<br>
+					- 
+					<a href="./keystroke/"><b>[Project Page]</b></a>, 
+					<a href="http://homes.cs.washington.edu/~yejin/Papers/emnlp14_keystroke.pdf">[pdf]</a>, 
+					<a href="http://www3.cs.stonybrook.edu/~rbanerjee/bib/banerjee2014_emnlp.bib">[bib]</a>
+					<br>
+				</li>
+
+				<li>ConnotationWordNet: Learning Connotation over the Word+Sense Network <br>
+					<span class="myself">Jun Seok Kang,</span>  
+					<a href="http://www.cs.stonybrook.edu/~songfeng/"class="coauthors"  target=_blank>Song Feng</a>, 
+					<a href="http://www.cs.stonybrook.edu/~leman" class="coauthors" target=_blank>Leman Akoglu</a>, 
+					<a href="http://homes.cs.washington.edu/~yejin/" class="coauthors" target=_blank>Yejin Choi.</a>, 
+					ACL 2014 &nbsp; &nbsp; <br>
+					- 
+					<a href="./connotation_wordnet/"><b>[Project Page]</b></a>, 
+					<a href="./papers/connotation_wordnet_2014.pdf">[pdf]</a>, 
+					<a href="./resources/ConnotationWordNet.pdf">[slides]</a>, 
+					<a href="./resources/ConnotationWordNet_Poster.pdf">[poster]</a>, 
+					<a href="./papers/connotation_wordnet_2014.bib">[bib]</a>
+					<br>
+					
+				</li>
+			</ul>
+
+<!-- 		</li>
+
+		<li>2013 -->
+			<ul style="list-style-type:square">
+				<li>Where Not to Eat? Improving Public Policy by Predicting Hygiene Inspections Using Online Reviews.<br>
+					<span class="myself">Jun Seok Kang</span>,  
+					<a href="http://www.cs.stonybrook.edu/~pkuznetsova/" class="coauthors" target=_blank>Polina Kuznetsova</a>, 
+					<a href="http://www.hbs.edu/faculty/Pages/profile.aspx?facId=602417" class="coauthors" target=_blank>Michael Luca</a>, 
+					<a href="http://homes.cs.washington.edu/~yejin/" class="coauthors" target=_blank>Yejin Choi.</a>,
+					EMNLP 2013 &nbsp; &nbsp; <br>
+					- 
+					<a href="./hygiene/"><b>[Project Page]</b></a>,
+					<a href="./papers/hygiene2013.pdf">[pdf]</a>, 
+					<a href="./papers/hygiene2013poster.pdf">[poster]</a>, 
+					<a href="./papers/hygiene_emnlp_2013.bib">[bib]</a>
+					<br>
+
+					<div class="featured">
+						<!-- <img src="./images/star.png" width="20px" style="display:inline;vertical-align:middle;">  -->
+					<!-- 	- Featured on <span id="atlantic_logo">&nbsp; <img src="./images/the_atlantic.png" height="16px" style="display:inline;vertical-align:middle;"> </span>  -->
+
+						<!-- - Featured on <span id="the_atlantic"> The Atlantic </span> 
+						(July/August 2013):
+						<a href="http://www.theatlantic.com/magazine/archive/2013/07/youll-never-throw-up-in-this-town-again/309383/" target="_blank"> <span id="featured_media_title">How Yelp Might Clean Up the Restaurant Industry </span></a> &nbsp;&nbsp;
+ -->
+ 						- Featured on <a href="http://www.theatlantic.com/magazine/archive/2013/07/youll-never-throw-up-in-this-town-again/309383/" target="_blank"> <span id="featured_media_title">The Atlantic</a>
+						<!-- <img src="./images/the_atlantic.png" height="18px"> -->
+					</div>
+				</li>
+
+				<li>Connotation Lexicon: A Dash of Sentiment Beneath the Surface Meaning.<br>
+					<a href="http://www.cs.sunysb.edu/~songfeng/" class="coauthors" target=_blank>Song Feng</a>, 
+					<span class="myself">Jun Seok Kang</span>,  
+					<a href="http://www.cs.stonybrook.edu/~pkuznetsova/" class="coauthors" target=_blank>Polina Kuznetsova</a>, 
+					<a href="http://homes.cs.washington.edu/~yejin/" class="coauthors" target=_blank>Yejin Choi</a>., 
+					ACL 2013. &nbsp; &nbsp; <br>
+					- 
+					<a href="http://www.cs.stonybrook.edu/~ychoi/connotation/"><b>[Project Page]</b></a>, 
+					<a href="https://aclanthology.org/P13-1174.pdf">[pdf]</a>, 
+					<a href="./resources/acl2013_connotation_slides.pdf">[slides]</a>, 
+					<a href="./papers/connotation_acl_2013.bib">[bib]</a>
+					<br>
+				</li>
+			</ul>
+<!-- 		</li>
+
+		<li>2010 -->
+			<ul style="list-style-type:square">
+				<li>Network selection for heterogeneous multi-service wireless networks.<br>
+	<em><span class="myself">Jun Seok Kang, </span> 
+		<a href="http://mnet.yonsei.ac.kr/Professor.html" class="coauthors" target=_blank>Seung-jae Han</a> 
+	LCN 2010. </em> &nbsp; &nbsp; <br>
+	- <a href="./papers/networkselection.pdf">[pdf]</a>, 
+	<a href="./papers/networkselection.bib">[bib]</a> 
+				</li>
+			</ul>
+<!-- 		</li>
+
+	</ul> -->
+</div>
+
+
+
+<br>
+<br>
+<br>
+
+
+</div> <!-- body -->
+<br>
+<br>
+<br>
+<br>
+<br>
+

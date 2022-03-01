@@ -1,0 +1,964 @@
+<html><head><title>HIT</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type='text/javascript' src='https://s3.amazonaws.com/mturk-public/externalHIT_v1.js'></script></head><body><form name="mturk_form" method="post" id="mturk_form" action="https://www.mturk.com/mturk/externalSubmit"><input type="hidden" value="" name="assignmentId" id="assignmentId" /><div style="font-size:12pt;">
+<p>Thank you for your participation!</p>
+
+<p>In this HIT, we need you to complete below <b><em>3 tasks</em></b>.</p>
+
+<p>At each task, you are asked to annotate a product description for <span class="ne"><b>named entities</b></span> and <span class="fe"> <b>feature entities</b>.</p>
+
+<ul>
+	<li><span class="ne">Named entity</span> is a word or a phrase that references to the product names. </li>
+
+	<li><span class="fe">Feature entity</span> is a word or a phrase that references the features of the product. </li>
+</ul>
+
+<p>See a sample annotation below. Named entities are in <span class="ne">blue</span>, and feature entities are in <span class="fe">red</span>.  </p>
+
+<p>[TODO:Change the example description to more clear one.]</p>
+
+<p>[TODO:Test on IE]</p>
+
+<p>[TODO:explain about named entities and feature entities based on the example.]</p>
+
+<div class="description_ex">
+	<p id="description_body_ex">
+Add shade and rich color to your outdoor oasis with our 5' Blue Turquoise Umbrella. <br/>
+This functional accent features a stylish pole crafted of mixed tropical hardwoods and a weather-resistant canopy for long-lasting good looks. <br/>
+And at this price, you can afford to mix and match from our selection of umbrellas in a variety of coordinating colors and designs to complete your patio or backyard.
+
+</p>
+
+</div>
+<br/>
+<br/>
+<p>You task is to annotate the given description as above, in two separated boxes for named entities and feature entities, as below.</p>
+
+<p>In this section, you can practice your annotation. 
+	<ul>
+		<li>Using your mouse, select the phrase that you think either named entity or feature entity. Selected text will be highlighted.</li>
+		<li>You can cancel the selection by clicking the selected phrase again.</li>
+		<li>If you want to clear the selected phrases of a description at once, click "clear".<li>
+
+	</ul>
+</p>
+
+<br/>
+<!-- ############  Task Practice ############ -->
+<table id="body" ><!--  Header  -->
+	<tbody>
+		<tr>
+			<td colspan="4">
+			<div id="header"><span id="title"><b>[Practice] - Annotate Named Entities and Feature Entities</span></div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<span class="ne title">Named Entity </span>
+			</td>
+			<td colspan="2">
+				<span class="fe title">Feature Entity </span>
+			</td>
+		</td>
+		<tr>
+			<td colspan="2">
+			<div class="description">
+				<p id="description_body" class="task_EX  desc_ne">
+Add shade and rich color to your outdoor oasis with our 5' Blue Turquoise Umbrella. <br/>
+This functional accent features a stylish pole crafted of mixed tropical hardwoods and a weather-resistant canopy for long-lasting good looks. <br>
+And at this price, you can afford to mix and match from our selection of umbrellas in a variety of coordinating colors and designs to complete your patio or backyard.
+	</p>
+			</div>
+			<div id="clearHighlights" class="task_EX"> clear </div>
+			 <!-- <div id="showMsg" onclick="alert(extractSelected());"> show </div> -->
+
+			</td>
+			<td colspan="2">
+			<div class="description">
+				<p id="description_body" class="task_FX  desc_fe" >
+Add shade and rich color to your outdoor oasis with our 5' Blue Turquoise Umbrella. <br>
+This functional accent features a stylish pole crafted of mixed tropical hardwoods and a weather-resistant canopy for long-lasting good looks. <br>
+And at this price, you can afford to mix and match from our selection of umbrellas in a variety of coordinating colors and designs to complete your patio or backyard.				</p>
+			</div>
+			<div id="clearHighlights" class="task_FX"> clear </div>
+			 <!-- <div id="showMsg" onclick="alert(extractSelected());"> show </div> -->
+
+			</td>
+		</tr>
+		<tr>
+
+		</td>
+		<tr>
+
+		</tr>
+		
+	</tbody>
+</table>
+
+
+
+			
+
+
+			
+
+
+
+<p><strong>Notice</strong>: We randomly deploy control tasks with known answers. To keep the integrity of the experiment, if you fail on many of such tasks, we might need to <em><strong>reject</strong></em> all of your work.</p>
+
+
+<p>* Before you submit, please check if you have answered all questions.</p>
+
+
+<hr>
+
+<p>&nbsp;</p>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> 
+
+<script type='text/javascript'>
+
+window.onload = function() {
+	document.getElementById('submitButton').setAttribute('onclick', 'return validateForm()'); 
+}
+function msgDescriptionBody() {
+//     var badTextHtml = '',
+//         goodTextHtml = ''
+//     $.each($(".selectedText"),function(i,currItem){
+//         if($(currItem).text() != ''){
+//             if($(currItem).hasClass("goodText")){
+//                 goodTextHtml += "<li>"+$(currItem).text()+"</li>"    
+//             }
+//             if($(currItem).hasClass("badText")){
+//                 badTextHtml += "<li>"+$(currItem).text()+"</li>"    
+//             }                        
+//         }
+//     })
+    
+//     $("#badText").html(badTextHtml)
+//     $("#goodText").html(goodTextHtml)
+//     $("#resultsCont").fadeIn()
+
+
+	// return $('#description_body').get(0).outerHTML;
+};
+
+function validateForm() {
+	var inputs = document.getElementsByTagName("input");
+	
+	var input_answers = {};
+
+	var missing_counter = 0;
+
+
+	var msg = msgDescriptionBody();
+	
+	// alert(msg);
+
+	if (!validateAnnotations()) {
+		return false;
+	}
+
+	
+	
+	return true;
+}
+
+
+var parentContainerId = "description"
+
+// http://www.michaelpstone.net/development/jquery/highlight-and-capture-text-using-jquery/ 
+// Make sure the object is created if it's already not
+if(!window.CurrentSelection){
+    CurrentSelection = {}
+}
+//define the selector object
+CurrentSelection.Selector = {}
+ 
+//get the current selection
+CurrentSelection.Selector.getSelected = function(){
+    var sel = '';
+    if(window.getSelection){
+        sel = window.getSelection()
+    }
+    else if(document.getSelection){
+        sel = document.getSelection()
+    }
+    else if(document.selection){
+        sel = document.selection.createRange()
+    }
+    return sel
+}
+//function to be called on mouseup
+CurrentSelection.Selector.mouseup = function(){
+    var st = CurrentSelection.Selector.getSelected()
+    var tag = "ne";
+
+    // parent node
+    var pnode = getSelectionParentElement();
+
+    if (pnode != null && $(pnode).hasClass("desc_fe")) {
+    	tag = "fe";
+    } else if (pnode != null && $(pnode).hasClass("desc_ne")) {
+    	tag = "ne"; 
+    } else {
+    	// When clicked other places, do nothing.
+    	return;
+    }
+
+    if(document.selection && !window.getSelection){
+        var range = st
+        if (range.length > 0) {
+        	range.pasteHTML("<span class='"+tag+" marked'>" + range.htmlText + "</span>");
+    	}
+    }
+    else{
+        var range = st.getRangeAt(0)
+
+        $(pnode).css("background-color", "white");
+        if (range.toString().trim().length > 0) {
+
+	        var newNode = document.createElement("span");
+	        newNode.setAttribute("class", tag +" marked");
+	        range.surroundContents(newNode);
+        }   
+    }
+}
+function getSelectionParentElement() {
+    var parentEl = null, sel;
+    if (window.getSelection) {
+        sel = window.getSelection();
+        if (sel.rangeCount) {
+            parentEl = sel.getRangeAt(0).commonAncestorContainer;
+            if (parentEl.nodeType != 1) {
+                parentEl = parentEl.parentNode;
+            }
+        }
+    } else if ( (sel = document.selection) && sel.type != "Control") {
+        parentEl = sel.createRange().parentElement();
+    }
+    return parentEl;
+}
+function validateAnnotations(){
+    var task1_NE_HTML = '',
+    	task1_FE_HTML = '',
+        task2_NE_HTML = '',
+    	task2_FE_HTML = '',
+    	task3_NE_HTML = '',
+    	task3_FE_HTML = '';
+
+    var answers = {"task1_NE":"",
+				    "task1_FE":"",
+				    "task2_NE":"",
+				    "task2_FE":"",
+				    "task3_NE":"",
+				    "task3_FE":""
+					};
+
+	var counter_empty = 0;
+
+    $.each($("p#description_body"),function(i,currItem){
+    	// paint white
+    	$(currItem).css("backgroundColor", "white");
+
+        if($(currItem).text() != ''){
+        	for (var ans_key in answers) {
+	        	if($(currItem).hasClass(ans_key)){
+	            	var htmlText = $(currItem).html();
+	            	if (checkAnnotated(htmlText)) {
+	            		answers[ans_key] = htmlText
+	            		
+	            	} else {
+	            		$(currItem).css("backgroundColor", "pink");
+	            		counter_empty++;
+	            	}
+	            }
+        	}
+ 
+        }
+    });
+
+	if (counter_empty == 0)  {
+		for (var key in answers) {
+			$("input[name=answer_"+key+"]").val(answers[key]);
+		}
+		alert("Thank you");
+		return true;
+	} else {
+		for (var key in answers) {
+			$("input[name=answer_"+key+"]").val(answers[key]);
+		}
+		alert("There are "+counter_empty + " undone tasks.");
+		return false;
+	}    
+
+}
+function checkAnnotated(answer) {
+	if (answer.indexOf("<span ") > -1) {
+		return true;
+	} 
+	return false;
+}
+$(function(){
+    $(document.body).bind("mouseup",CurrentSelection.Selector.mouseup)
+
+
+   
+//event handler for clicking the selected highlighted text
+$("span.ne").live("click",function(){
+	// If selected again, remove the highlight
+
+	$(this).contents().unwrap();
+	
+	return false;
+})
+$("span.fe").live("click",function(){
+
+	$(this).contents().unwrap();
+})
+
+//clear the results and set the content back to text and not html
+$("#clearHighlights").live("click",function(){
+	// msgDescriptionBody();
+	// alert("clear");
+
+	var bodies = $("p#description_body." + this.className);
+	if (bodies.length > 0) {
+		var body = $(bodies[0]);
+		$(body).find('.marked').contents().unwrap();
+		// body.text(body.text());
+	}
+	// var hLCont = $(".description p");
+	// hLCont.text(hLCont.text()); 
+})
+})
+ 
+</script>
+<style type="text/css">
+#body 
+{
+	position:relative;
+	top:10px;
+	left:0px;
+	margin-left:20px;
+	margin-right:30px;
+	margin-top:10px;
+	margin-bottom:30px;
+	width:850px;
+	padding:20px;
+	padding-bottom:10px;
+	border:5px solid gray;
+	/*height:1100px;*/
+	/*overflow: hidden;		*/
+}
+
+#submit
+{
+	position:relative;
+	top:10px;
+	left:0px;
+	padding:0px;
+	padding-top:10px;
+	width:100%;
+	height:70px;
+	overflow:hidden;
+ 	/* background-color:#F55; */
+	border-top: 1px solid silver;
+	border-bottom: 1px solid silver;
+	overflow:scroll;	
+}
+
+
+.title
+{
+	font-size: 23px;
+}
+.fe
+{
+	color:red;
+	/*background-color: #FDD;*/
+	/* font-weight:bold; */
+}
+
+.ne
+{
+	color:#00F;
+	/*background-color: #DDf;*/
+	/* font-weight:bold; */
+}
+
+.fe_ex
+{
+	color:red;
+	/*background-color: #FDD;*/
+	/* font-weight:bold; */
+}
+
+.ne_ex
+{
+	color:#00F;
+	/*background-color: #DDf;*/
+	/* font-weight:bold; */
+}
+
+#title
+{
+	font-size:20px;
+	font-weight:bold;
+}
+
+#header 
+{	
+	position:relative;
+/*	top:0px;
+	left:0px;
+*/	padding-top:10px;
+	/* background-color:brown;  */
+	 /*min-height:100px; */
+	width:100%;
+	height:40px;
+	/* border: 1px solid red; */
+}
+
+#aspect_question
+{	
+	position:relative;
+	padding-top:10px;
+
+	width:100%;
+	background-color: #DDD;
+
+	/* border: 1px solid red; */
+}
+
+.description
+{
+	width:450px;
+	border:1px solid black;
+	padding: 2ex;
+	font-size: 20px;
+	line-height: 3ex;
+}
+
+#description 
+{
+	width:450px;
+	border:1px solid black;
+	padding: 2ex;
+	font-size: 20px;
+	line-height: 3ex;
+}
+
+.description_ex
+{
+	width:450px;
+	border:1px solid black;
+	padding: 2ex;
+	font-size: 20px;
+	line-height: 3ex;
+}
+
+#image_wrap_left
+{
+	/* background-color:#DDD; */
+	top:20px;
+	left:0px;
+	min-height:380px;
+	max-height:380px;
+	/*float:left;*/
+	width:450px;
+	/* width:496px; */
+
+	padding:0px;
+	/* border:1px solid blue; */
+/* 	border-left:1px solid gray;
+	border-top:1px solid gray;
+	border-bottom:1px solid gray */;
+
+	overflow:hidden;
+}
+
+#image_wrap_right
+{
+	/* background-color:#DDD; */
+	top:20px;
+	left:490px;
+	min-height:380px;
+	max-height:380px;
+	/*float:left;*/
+	width:450px;
+	/* width:496px; */
+
+	padding:0px;
+	/* border:1px solid red; */
+/* 	border-left:1px solid gray;
+	border-top:1px solid gray;
+	border-bottom:1px solid gray */;
+
+	overflow:hidden;
+}
+
+
+#answer_3_left
+{
+	top:660px;
+	left:0px;
+	width:250px;
+	/*height:30px;*/
+	
+	float:left;
+	border:1px solid #CCC;
+	/*border-top:0px;
+	border-bottom:0px;*/
+	padding:10px;
+}
+
+
+
+#answer_3_center
+{
+	top:660px;
+	left:270px;
+	width:250px;
+	/*height:30px;*/
+	
+	float:left;
+	border:1px solid #CCC;
+	/*border-top:0px;
+	border-bottom:0px;*/
+	padding:10px;
+}
+
+#answer_3_right
+{
+	top:660px;
+	left:560px;
+	width:250px;
+	/*height:30px;*/
+	
+	float:left;
+	border:1px solid #CCC;
+	/*border-top:0px;
+	border-bottom:0px;*/
+	padding:10px;
+}
+
+#answer_left
+{
+	top:660px;
+	left:0px;
+	width:430px;
+	/*height:30px;*/
+	
+	float:left;
+	border:1px solid #CCC;
+	/*border-top:0px;
+	border-bottom:0px;*/
+	padding:10px;
+}
+
+#answer_left_long
+{
+	top:660px;
+	left:0px;
+	width:650px;
+	/*height:30px;*/
+	
+	float:left;
+	border:1px solid #CCC;
+	/*border-top:0px;
+	border-bottom:0px;*/
+	padding:10px;
+}
+
+
+
+#answer_right
+{
+	top:660px;
+	left:490px;
+	width:430px;
+	/*height:30px;*/
+	
+	float:left;
+	border:1px solid #CCC;
+	padding:10px;
+}
+
+
+
+#survey1_left
+{
+	top:715px;
+	left:0px;
+	width:430px;
+	/*height:100px;*/
+	
+	float:left;
+	border:2px solid #CCC;
+	padding:10px;
+}
+
+#survey1_right
+{
+	top:715px;
+	left:490px;
+	width:430px;
+	/*height:100px;*/
+	
+	float:left;
+	border:2px solid #CCC;
+	padding:10px;
+}
+
+
+#survey2_left
+{
+	top:840px;
+	left:0px;
+	width:430px;
+	/*height:100px;*/
+	
+	/*float:left;*/
+	border:2px solid #CCC;
+	padding:10px;
+}
+
+#survey2_right
+{
+	top:840px;
+	left:490px;
+	width:430px;
+	/*height:100px;*/
+	
+	/*float:left;*/
+	border:2px solid #CCC;
+	padding:10px;
+}
+
+
+#writing_left
+{
+	top:410px;
+	left:0px;
+	width:430px;
+	min-height:130px;
+	/*float:left;*/
+	border:2px solid #CCC;
+	padding:10px;
+	font-size: 11pt;
+	font-family: sans-serif;
+	overflow:auto;
+}
+
+
+#writing_right
+{
+	top:410px;
+	left:490px;
+	width:430px;
+	min-height:130px;
+	/*float:left;*/
+	border:2px solid #CCC;
+	padding:10px;
+	font-size: 11pt;
+	font-family: sans-serif;
+	overflow:auto;
+
+}
+
+#writing_left_label
+{
+	width:430px;
+	min-height:20px;
+	/*float:left;*/
+	/*border:2px solid #CCC;*/
+	padding:10px;
+	font-size: 10pt;
+	font-family: sans-serif;
+	overflow:auto;
+	text-align: center;
+}
+
+
+#writing_right_label
+{
+	width:430px;
+	min-height:20px;
+	/*float:left;*/
+	/*border:2px solid #CCC;*/
+	padding:10px;
+	font-size: 10pt;
+	font-family: sans-serif;
+	overflow:auto;
+	text-align: center;
+}
+
+#image_wrap
+{
+	/* background-color:#DDD; */
+	position:relative;
+	min-height:380px;
+	max-height:380px;
+	/*float:left;*/
+	width:500px;
+	/* width:496px; */
+
+	padding:0px;
+/* 	border-left:1px solid gray;
+	border-top:1px solid gray;
+	border-bottom:1px solid gray */;
+
+	overflow:hidden;
+}
+
+#imgbox
+{
+	/*background-color:brown;  */
+	margin:auto;
+	min-height:370px;
+	max-height:370px;
+	max-width:450px;
+/*	width:50%;
+*/	overflow:hidden;
+	text-align: center;
+}
+
+img #imgbox
+{
+	top:0px;
+	bottom:0px;
+	/*left:0px;
+	right:0px;*/
+	margin-left:auto;	
+	margin-right:auto;
+	
+	display: block;
+
+	min-height:370px;
+	max-height:370px;
+	max-width:450px;
+	border:1px solid gray;
+	/* max-width:500px; */	
+}
+
+table .survey
+{
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	border-collapse:collapse;
+	width:910px;
+	border-color:#AAA;
+	text-align: center;
+	margin:auto;
+}
+
+td .survey
+{
+	border: 1px solid black;
+	padding:5px;
+	border-color:#BBB;
+	/*background-color: #A55;*/
+}
+
+
+table .product_info
+{
+	border-collapse:collapse;
+	border-color:#AAA;
+
+	border-top: 1px dotted black;
+	border-bottom: 1px dotted black;
+	border-left: 1px dotted black;
+	border-right: 1px dotted black;
+	/*border:1px dotted black;*/
+	width:910px;
+	text-align: center;
+	margin:auto;
+}
+
+td .product_info
+{
+	/*border: 1px dotted black;*/
+	/*border:0px ;*/
+	padding:5px; 
+	border-color:#BBB;
+	/*background-color: #A55;*/
+}
+
+td .product_info_left
+{
+	height:50px;
+	padding:5px; 
+	border:1px dotted black;
+	border-color:#BBB;	
+}
+
+td .product_info_left_left
+{
+	width:100px;
+	height:50px;
+	padding:5px; 
+	border:1px dotted black;
+	border-color:#BBB;	
+}
+</style>
+
+<!-- ############  Task 1 ############ -->
+<table id="body"><!--  Header  -->
+	<tbody>
+		<tr>
+			<td colspan="2">
+			<div id="header"><span id="title">Task 1 - Annotate Named Entities and Feature Entities</span></div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<span class="ne title">Named Entity </span>
+			</td>
+			<td colspan="2">
+				<span class="fe title">Feature Entity </span>
+			</td>
+		</td>
+		<tr>
+			<td colspan="2">
+			<div class="description">
+				<p id="description_body" class="task1_NE  desc_ne">
+Add shade and rich color to your outdoor oasis with our 5' Blue Turquoise Umbrella. <br>
+This functional accent features a stylish pole crafted of mixed tropical hardwoods and a weather-resistant canopy for long-lasting good looks. <br>
+And at this price, you can afford to mix and match from our selection of umbrellas in a variety of coordinating colors and designs to complete your patio or backyard.				</p>
+			</div>
+			<div id="clearHighlights" class="task1_NE"> clear </div>
+			 <!-- <div id="showMsg" onclick="alert(extractSelected());"> show </div> -->
+
+			</td>
+			<td colspan="2">
+			<div class="description">
+				<p id="description_body" class="task1_FE  desc_fe" >
+Add shade and rich color to your outdoor oasis with our 5' Blue Turquoise Umbrella. <br>
+This functional accent features a stylish pole crafted of mixed tropical hardwoods and a weather-resistant canopy for long-lasting good looks. <br>
+And at this price, you can afford to mix and match from our selection of umbrellas in a variety of coordinating colors and designs to complete your patio or backyard.				</p>
+			</div>
+			<div id="clearHighlights" class="task1_FE"> clear </div>
+			 <!-- <div id="showMsg" onclick="alert(extractSelected());"> show </div> -->
+
+			</td>
+		</tr>
+		<tr>
+
+		</td>
+		<tr>
+
+		</tr>
+		
+	</tbody>
+</table>
+
+
+<!-- ############  Task 2 ############ -->
+<table id="body"><!--  Header  -->
+	<tbody>
+		<tr>
+			<td colspan="2">
+			<div id="header"><span id="title">Task 2 - Annotate Named Entities and Feature Entities</span></div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<span class="ne title">Named Entity </span>
+			</td>
+			<td colspan="2">
+				<span class="fe title">Feature Entity </span>
+			</td>
+		</td>
+		<tr>
+			<td colspan="2">
+			<div class="description">
+				<p id="description_body" class="task2_NE  desc_ne">
+Add shade and rich color to your outdoor oasis with our 5' Blue Turquoise Umbrella. <br>
+This functional accent features a stylish pole crafted of mixed tropical hardwoods and a weather-resistant canopy for long-lasting good looks. <br>
+And at this price, you can afford to mix and match from our selection of umbrellas in a variety of coordinating colors and designs to complete your patio or backyard.				</p>
+			</div>
+			<div id="clearHighlights" class="task2_NE"> clear </div>
+			 <!-- <div id="showMsg" onclick="alert(extractSelected());"> show </div> -->
+
+			</td>
+			<td colspan="2">
+			<div class="description">
+				<p id="description_body" class="task2_FE  desc_fe" >
+Add shade and rich color to your outdoor oasis with our 5' Blue Turquoise Umbrella. <br>
+This functional accent features a stylish pole crafted of mixed tropical hardwoods and a weather-resistant canopy for long-lasting good looks. <br>
+And at this price, you can afford to mix and match from our selection of umbrellas in a variety of coordinating colors and designs to complete your patio or backyard.				</p>
+			</div>
+			<div id="clearHighlights" class="task2_FE"> clear </div>
+			 <!-- <div id="showMsg" onclick="alert(extractSelected());"> show </div> -->
+
+			</td>
+		</tr>
+		<tr>
+
+		</td>
+		<tr>
+
+		</tr>
+		
+	</tbody>
+</table>
+
+<!-- ############  Task 3 ############ -->
+<table id="body"><!--  Header  -->
+	<tbody>
+		<tr>
+			<td colspan="2">
+			<div id="header"><span id="title">Task 3 - Annotate Named Entities and Feature Entities</span></div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<span class="ne title">Named Entity </span>
+			</td>
+			<td colspan="2">
+				<span class="fe title">Feature Entity </span>
+			</td>
+		</td>
+		<tr>
+			<td colspan="2">
+			<div class="description">
+				<p id="description_body" class="task3_NE  desc_ne">
+Add shade and rich color to your outdoor oasis with our 5' Blue Turquoise Umbrella. <br>
+This functional accent features a stylish pole crafted of mixed tropical hardwoods and a weather-resistant canopy for long-lasting good looks. <br>
+And at this price, you can afford to mix and match from our selection of umbrellas in a variety of coordinating colors and designs to complete your patio or backyard.				</p>
+			</div>
+			<div id="clearHighlights" class="task3_NE"> clear </div>
+			 <!-- <div id="showMsg" onclick="alert(extractSelected());"> show </div> -->
+
+			</td>
+			<td colspan="2">
+			<div class="description">
+				<p id="description_body" class="task3_FE  desc_fe" >
+Add shade and rich color to your outdoor oasis with our 5' Blue Turquoise Umbrella. <br>
+This functional accent features a stylish pole crafted of mixed tropical hardwoods and a weather-resistant canopy for long-lasting good looks. <br>
+And at this price, you can afford to mix and match from our selection of umbrellas in a variety of coordinating colors and designs to complete your patio or backyard.				</p>
+			</div>
+			<div id="clearHighlights" class="task3_FE"> clear </div>
+			 <!-- <div id="showMsg" onclick="alert(extractSelected());"> show </div> -->
+
+			</td>
+		</tr>
+		<tr>
+
+		</td>
+		<tr>
+
+		</tr>
+		
+	</tbody>
+</table>
+
+<input type="hidden" id="answer" name="answer_task1_NE" value="" />
+<input type="hidden" id="answer" name="answer_task1_FE" value="" />
+<input type="hidden" id="answer" name="answer_task2_NE" value="" />
+<input type="hidden" id="answer" name="answer_task2_FE" value="" />
+
+<input type="hidden" id="answer" name="answer_task3_NE" value="" />
+<input type="hidden" id="answer" name="answer_task3_FE" value="" />
+
+</div>
+<!-- body --><p class="text-center"><input type="submit" id="submitButton" class="btn btn-primary" value="Submit" /></p></form><script language="Javascript">turkSetAssignmentID();</script></body></html>
